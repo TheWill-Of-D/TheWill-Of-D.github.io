@@ -156,21 +156,17 @@
     transform: scale(1.01);
   }
 
-  .work-cover > span {
-    position: absolute;
-    left: 22px;
-    bottom: 20px;
-    z-index: 2;
-    padding: 7px 10px;
-    background: rgba(255, 255, 255, 0.88);
+  .work-info {
+    padding: 14px 0 28px;
+  }
+
+  .work-info .card-meta {
+    margin-bottom: 8px;
+    color: var(--accent-hover);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-  }
-
-  .work-info {
-    padding: 14px 0 28px;
   }
 
   .work-info h3 {
@@ -208,29 +204,48 @@
 
   .experience-item {
     display: grid;
-    grid-template-columns: minmax(170px, 0.45fr) minmax(0, 1.8fr);
-    column-gap: clamp(24px, 5vw, 80px);
-    padding: 18px 0;
+    grid-template-columns: minmax(180px, 0.55fr) minmax(190px, 0.8fr) minmax(260px, 1.25fr);
+    column-gap: clamp(22px, 4vw, 64px);
+    align-items: start;
+    padding: 20px 0;
     border-bottom: 1px solid var(--border);
   }
 
   .experience-item time {
-    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .experience-item time span,
+  .experience-item time small {
+    display: block;
+  }
+
+  .experience-item time span {
+    color: var(--text);
     font-size: 0.78rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+  }
+
+  .experience-item time small {
+    margin-top: 3px;
+    color: var(--accent-hover);
+    font-size: 0.72rem;
+    font-weight: 600;
   }
 
   .experience-item p {
-    color: var(--muted);
     font-size: 0.95rem;
     line-height: 1.5;
   }
 
-  .experience-item strong {
+  .experience-role {
     color: var(--text);
     font-weight: 600;
+  }
+
+  .experience-company {
+    color: var(--muted);
+    font-weight: 500;
   }
   
   /* Writing index */
@@ -460,6 +475,17 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 5vw;
     }
+    .experience-item {
+      grid-template-columns: minmax(150px, 0.5fr) minmax(0, 1fr);
+      column-gap: 28px;
+    }
+    .experience-item time {
+      grid-row: 1 / span 2;
+    }
+    .experience-role,
+    .experience-company {
+      grid-column: 2;
+    }
     .site-main {
       padding: 130px 6vw 64px;
     }
@@ -513,6 +539,12 @@
     .experience-item {
       grid-template-columns: 1fr;
       gap: 6px;
+    }
+    .experience-item time,
+    .experience-role,
+    .experience-company {
+      grid-column: 1;
+      grid-row: auto;
     }
     .writing-card .card-meta,
     .writing-card h2,
