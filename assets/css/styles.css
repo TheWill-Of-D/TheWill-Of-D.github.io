@@ -212,25 +212,10 @@
   }
 
   .experience-item time {
-    line-height: 1.4;
-  }
-
-  .experience-item time span,
-  .experience-item time small {
-    display: block;
-  }
-
-  .experience-item time span {
     color: var(--text);
     font-size: 0.78rem;
     font-weight: 600;
-  }
-
-  .experience-item time small {
-    margin-top: 3px;
-    color: var(--accent-hover);
-    font-size: 0.72rem;
-    font-weight: 600;
+    line-height: 1.4;
   }
 
   .experience-item p {
