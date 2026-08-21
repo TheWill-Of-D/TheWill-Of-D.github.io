@@ -9,7 +9,7 @@
   <meta property="og:description" content="PhD student, engineer, and researcher at NTU Singapore. A home for my work, writing, and evolving ideas." />
   <meta property="og:type" content="website" />
   <title>Pooranakumaran Dhanoosh</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260821-3" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260821-4" />
   <!-- Three.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -17,36 +17,37 @@
   <nav aria-label="Primary navigation">
     <a class="logo" href="index.html" aria-current="page">Pooranakumaran Dhanoosh</a>
     <ul>
-      <li><a href="about.html">About</a></li>
       <li><a href="blog.html">Blog</a></li>
+      <li><a href="https://github.com/TheWill-Of-D" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
       <li><a href="https://www.linkedin.com/in/dhanoosh-pooranakumaran/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
     </ul>
   </nav>
 
-  <!-- Container for Lorenz Attractor Animation -->
-  <div id="lorenz-container"></div>
-  
   <main class="home-main">
     <section class="home-hero" aria-labelledby="home-title">
-      <p class="eyebrow">PhD student · Engineer · Researcher</p>
       <h1 id="home-title">Hi, I’m Dhanoosh.</h1>
       <p class="home-intro">I’m a PhD student and President’s Graduate Scholar at NTU Singapore, with a background in electrical and electronic engineering. I’m interested in the full technical stack behind intelligent systems—from IC design and computing hardware to machine learning and robotics. This is where I share my work, writing, and evolving thoughts.</p>
-      <div class="home-actions">
-        <a class="button button-primary" href="about.html">More about me</a>
-        <a class="button button-secondary" href="blog.html">Read my writing</a>
-      </div>
     </section>
 
-    <a class="featured-note" href="essays/the-correct-action-is-not-always-in-the-observation.html" aria-label="Read The Correct Action Is Not Always in the Observation">
-      <p class="card-meta">Featured research note · August 2026</p>
-      <h2>The Correct Action Is Not Always in the Observation</h2>
-      <p>Why robots must learn what to measure—and when they know enough to act.</p>
-      <span>Read the essay →</span>
-    </a>
+    <section class="selected-work" aria-labelledby="selected-work-title">
+      <h2 id="selected-work-title" class="section-heading">Selected writing</h2>
+      <div class="work-grid">
+        <article class="work-item">
+          <a class="work-cover" href="essays/the-correct-action-is-not-always-in-the-observation.html" aria-label="Read The Correct Action Is Not Always in the Observation">
+            <div id="lorenz-container" aria-hidden="true"></div>
+            <span>Research note · August 2026</span>
+          </a>
+          <div class="work-info">
+            <h3><a href="essays/the-correct-action-is-not-always-in-the-observation.html">The Correct Action Is Not Always in the Observation</a></h3>
+            <p>Why robots must learn what to measure—and when they know enough to act.</p>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <!-- Scripts -->
-  <script src="assets/js/lorenz.js?v=20260821-3"></script>
+  <script src="assets/js/lorenz.js?v=20260821-4"></script>
   <script src="assets/js/main.js?v=20260821-1"></script>
 </body>
 </html>
