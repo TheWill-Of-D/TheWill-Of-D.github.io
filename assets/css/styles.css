@@ -48,6 +48,7 @@
     font-weight: 650;
     letter-spacing: -0.02em;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   nav .logo:hover,
@@ -489,16 +490,25 @@
 
   @media (max-width: 480px) {
     nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
       padding: 13px 14px;
     }
     nav ul {
+      width: 100%;
+      justify-content: space-between;
       gap: 9px;
     }
     nav ul li a {
       font-size: 0.78rem;
     }
     .home-main {
-      padding-top: 112px;
+      padding-top: 148px;
+    }
+    .site-main,
+    .essay {
+      padding-top: 148px;
     }
     .home-hero h1 {
       font-size: clamp(2.75rem, 14vw, 4rem);
