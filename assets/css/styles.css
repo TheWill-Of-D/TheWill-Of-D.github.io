@@ -4,11 +4,14 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
   body {
     font-family: "Poppins", sans-serif;
     background-color: #0a0a0a;
     color: white;
+    overflow-x: hidden;
+  }
+
+  body.home-page {
     overflow: hidden;
   }
   
@@ -76,11 +79,183 @@
     z-index: 5;
     position: relative;
   }
+
+  /* Writing index */
+  .site-main {
+    width: min(100% - 40px, 1040px);
+    margin: 0 auto;
+    padding: 132px 0 80px;
+  }
+
+  .page-intro {
+    max-width: 680px;
+    margin-bottom: 48px;
+  }
+
+  .page-intro h1 {
+    margin-bottom: 12px;
+    font-size: clamp(2.25rem, 7vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .page-intro p {
+    color: #b7b7b7;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .writing-list {
+    display: grid;
+    gap: 20px;
+  }
+
+  .writing-card {
+    display: block;
+    padding: 28px;
+    border: 1px solid #292929;
+    border-radius: 16px;
+    background: #111;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .writing-card:hover,
+  .writing-card:focus-visible {
+    border-color: #00ffff;
+    transform: translateY(-2px);
+  }
+
+  .writing-card .card-meta,
+  .article-meta,
+  .eyebrow {
+    color: #00ffff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .writing-card h2 {
+    margin: 10px 0;
+    font-size: clamp(1.35rem, 4vw, 2rem);
+    line-height: 1.25;
+  }
+
+  .writing-card p {
+    max-width: 720px;
+    color: #b7b7b7;
+    line-height: 1.65;
+  }
+
+  /* Long-form essays */
+  .essay-page {
+    background:
+      radial-gradient(circle at 50% -20%, rgba(0, 255, 255, 0.09), transparent 38rem),
+      #0a0a0a;
+  }
+
+  .essay {
+    width: min(100% - 40px, 760px);
+    margin: 0 auto;
+    padding: 138px 0 96px;
+  }
+
+  .essay-header {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #292929;
+  }
+
+  .essay h1 {
+    margin: 14px 0 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.5rem, 8vw, 4.75rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+
+  .essay-dek {
+    max-width: 680px;
+    margin-bottom: 22px;
+    color: #c8c8c8;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    line-height: 1.45;
+  }
+
+  .article-meta {
+    color: #8f8f8f;
+    letter-spacing: 0.06em;
+  }
+
+  .essay-body {
+    padding-top: 42px;
+    color: #e4e4e4;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.12rem;
+    line-height: 1.82;
+  }
+
+  .essay-body p {
+    margin-bottom: 1.45em;
+  }
+
+  .essay-body h2 {
+    margin: 2.4em 0 0.75em;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(1.45rem, 4vw, 2rem);
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+
+  .essay-body a {
+    color: #69ffff;
+    text-decoration-color: rgba(105, 255, 255, 0.45);
+    text-underline-offset: 0.18em;
+  }
+
+  .essay-body a:hover {
+    text-decoration-color: #69ffff;
+  }
+
+  .pull-quote {
+    margin: 2.2em 0;
+    padding: 0.2em 0 0.2em 24px;
+    border-left: 3px solid #00ffff;
+    color: #fff;
+    font-size: 1.35rem;
+    line-height: 1.55;
+  }
+
+  .essay-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid #292929;
+    color: #9b9b9b;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .essay-footer a {
+    color: #69ffff;
+  }
   
   /* Responsive Adjustments */
   @media (max-width: 768px) {
+    nav {
+      padding: 14px 18px;
+    }
+    nav .logo {
+      font-size: 18px;
+    }
     nav ul {
       gap: 10px;
+    }
+    nav ul li a {
+      font-size: 0.9rem;
     }
     .hero-text h1 {
       font-size: 1.8rem;
@@ -88,5 +263,16 @@
     .hero-text p {
       font-size: 1rem;
     }
+    .site-main,
+    .essay {
+      width: min(100% - 32px, 760px);
+      padding-top: 112px;
+    }
+    .writing-card {
+      padding: 22px;
+    }
+    .essay-body {
+      font-size: 1.04rem;
+      line-height: 1.75;
+    }
   }
-  

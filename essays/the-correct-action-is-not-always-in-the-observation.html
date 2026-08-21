@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A research note on uncertainty, physical interaction, world models, and why robots must learn what to measure before committing to action." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Correct Action Is Not Always in the Observation" />
+  <meta property="og:description" content="Why robots must learn what to measure—and when they know enough to act." />
+  <title>The Correct Action Is Not Always in the Observation</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="essay-page">
+  <nav aria-label="Primary navigation">
+    <div class="logo">My Portfolio</div>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../projects.html">Projects</a></li>
+      <li><a class="active" href="../blog.html" aria-current="page">Blog</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <article class="essay">
+      <header class="essay-header">
+        <p class="eyebrow">Research note</p>
+        <h1>The Correct Action Is Not Always in the Observation</h1>
+        <p class="essay-dek">Why robots must learn what to measure—and when they know enough to act</p>
+        <p class="article-meta"><time datetime="2026-08-21">August 2026</time> · Version 0.1</p>
+      </header>
+
+      <div class="essay-body">
+        <p>Place three identical boxes in three identical rooms. One is empty, one contains a heavy internal weight, and one is fastened to the table. From a camera’s perspective, the three situations are identical. But they do not permit the same action. A forceful lift may be appropriate for the heavy box, excessive for the empty one, and dangerous for the attached one.</p>
+
+        <p>What should a robot do?</p>
+
+        <p>It cannot solve the problem by looking harder. The information required to distinguish these worlds is not hidden somewhere deeper in the image. It remains unavailable until there is a physical interaction. It has not yet been produced.</p>
+
+        <p>Give a person an unfamiliar object and ask them to use it. They rarely wait until they possess a complete model of it. From its appearance, they form tentative ideas about how it might be held, moved, or opened. They turn it, press it, lift it, or shake it, revising those ideas as the object responds.</p>
+
+        <p>This exploration is not aimless. What the person tries depends on what they are trying to accomplish. To move the object, its exact internal mechanism may be irrelevant. To open it, the distinction between a hinge, a sliding joint, and a fixed seam becomes decisive. The goal determines which uncertainty matters.</p>
+
+        <p>Faced with the boxes, a person would rarely commit immediately to one explanation. We might preload the grasp, begin lifting gently, feel the resistance, watch for slip, and adjust. The first movement would be both an action and a measurement. It would change the box while also changing what we know about the box.</p>
+
+        <p>This example is a way into the question guiding this essay: what should a genuinely capable robot model be able to do in five years that today’s models cannot?</p>
+
+        <p>Influenced by John Schulman’s distinction between idea-driven and <a href="https://joschu.net/blog/opinionated-guide-ml-research.html">goal-driven research</a>, I want to begin with the capability rather than a preferred architecture. Such a robot should be able to encounter an unfamiliar object, preserve multiple explanations of how it might behave, determine what it needs to measure, and act once it knows enough. We can then reason backward toward the models, sensors, and data that capability requires.</p>
+
+        <p>Yet much of robot learning treats a successful trajectory as though every demonstrated action were the answer to the observation immediately preceding it. That assumption quietly breaks whenever the demonstrator knew something the robot could not know—because the information came from an earlier attempt, an unrecorded interaction, privileged sensing, or evidence that appeared only later.</p>
+
+        <p class="pull-quote">When the same observation is compatible with physical worlds that require different actions, uncertainty is not merely a confidence score. It is part of the robot’s state.</p>
+
+        <p>A physically intelligent robot must interact to resolve the distinctions that matter—and stop once it knows enough to act.</p>
+
+        <h2>Uncertainty belongs in the decision state</h2>
+
+        <p>A sufficiently capable policy might learn to begin every lift cautiously. In some tasks, that may be enough. But caution is not a substitute for knowing what remains uncertain. The robot must distinguish between uncertainty that could change its decision and uncertainty that does not matter.</p>
+
+        <p>The box need not be weighed precisely. The robot may only need to determine whether it is free to move, whether its grasp will hold, and whether the intended action remains safe. Physical intelligence therefore does not require eliminating all uncertainty. It requires resolving only the distinctions that could change what the robot should do.</p>
+
+        <p>By “state,” I do not mean that uncertainty is a physical property of the box. I mean that it is part of the information required to choose an action. Two robots facing the same box may occupy different decision states if one has already tested it and the other has not. If preserving those incompatible possibilities systematically produces better decisions, then uncertainty is not merely a confidence score attached to a prediction. It is part of the state required for physical intelligence.</p>
+
+        <h2>Resetting the trajectory does not reset the teacher</h2>
+
+        <p>This creates a problem for how robot demonstrations are collected.</p>
+
+        <p>Suppose a person repeatedly lifts the same visually identical box. During the first attempt, the person discovers its weight. On every later attempt, they begin with knowledge acquired from the first. But if each attempt is recorded as an independent trajectory, the dataset contains the demonstrator’s informed actions without the interaction that made those actions informed.</p>
+
+        <p class="pull-quote">Resetting the trajectory does not reset the teacher.</p>
+
+        <p>The learner is then asked to reproduce an action from information it never received. The action may have succeeded, but that does not make it a valid answer to the learner’s observation. A demonstrated action is a valid training target only when the learner can reconstruct the information state from which it was chosen.</p>
+
+        <p>Avoiding this mismatch is possible, but expensive. Each trial could contain a genuinely unfamiliar box, or its hidden properties could be changed unpredictably between attempts. A predictable sequence would not be enough: the demonstrator could learn the pattern. We could instead preserve the complete interaction history, collect only genuine first encounters, or explicitly record which information was available before each action.</p>
+
+        <p>The important point is not that every dataset must preserve everything. It is that robot experience cannot always be treated as a collection of observation–action answers. Sometimes it records an informed decision while omitting the process through which the necessary information was obtained.</p>
+
+        <h2>Learning to probe in imagination</h2>
+
+        <p>What if the robot did not learn its policy directly from these trajectories?</p>
+
+        <p>A different possibility is to use real interactions to train a closed-loop probabilistic model of how the physical world responds to action. Reinforcement learning could then take place inside that model, as it does in the Dreamer family of agents. An imagined robot could begin lifting, observe the predicted force and motion, update what it believes about the box, and decide whether to continue, change its grasp, or stop.</p>
+
+        <p>In principle, the value function could discover the value of measurement without a separate reward for information. A probing action is useful when the evidence it produces improves the eventual task outcome by more than the probe costs in time, energy, or risk. Once the remaining uncertainty cannot change the best action, the policy should commit. The task itself determines what is worth learning.</p>
+
+        <p>This possibility is suggested by recent progress in training agents through imagined experience. <a href="https://danijar.com/project/dreamer/">Dreamer</a> learns behavior from rollouts in a compact latent world model, while <a href="https://danijar.com/project/dreamer4/">Dreamer 4</a> scales imagination training to complex offline experience and demonstrates counterfactual predictions on robotics data. But generating plausible futures is not by itself enough for the problem described here.</p>
+
+        <h2>The simulated robot must not know what the simulated world knows</h2>
+
+        <p class="pull-quote">The simulated world and the simulated robot must not know the same things.</p>
+
+        <p>Suppose an imagined episode begins with a box that is either heavy and movable or light and attached. The world model must preserve whichever hidden condition governs that episode so that its consequences remain physically coherent. But it must reveal that condition to the policy only through observations the real robot could have obtained. The imagined world may know that the box is attached. The imagined robot must not.</p>
+
+        <p>If the policy receives a hidden model state that already identifies the correct world, it has no reason to probe. If the model averages incompatible possibilities, it may imagine a box that is partly heavy and partly attached. If it resamples the hidden condition at each step, the imagined physics can change halfway through an interaction. In every case, reinforcement learning solves the wrong problem.</p>
+
+        <p>Any system that succeeds at this problem must somehow preserve the distinction between what may be true in the world and what the robot has evidence to believe. It must behave as though incompatible hypotheses persist across time, predict how a controlled intervention would distinguish them, and update the robot’s information state only when new evidence becomes available. Whether these distinctions must be explicit in the architecture or can emerge implicitly is an open question. They are the functional conditions under which probing followed by commitment could emerge from task reward alone.</p>
+
+        <h2>What transfers between bodies?</h2>
+
+        <p>This does not require abandoning the idea that experience can transfer between robots. It requires being precise about what transfers.</p>
+
+        <p>The trajectory itself is not embodiment-agnostic. Joint angles, camera viewpoints, gripper geometry, force limits, and control timing belong to the robot that produced it. The physical evidence contained in the trajectory can be more general: which object moved, where contact occurred, how the object responded, which constraints could explain that response, and which possibilities remain unresolved.</p>
+
+        <p>It is useful, at least conceptually, to distinguish three things: the physical world, the embodiment acting on it, and the information available to that embodiment. A learned system might represent this separation explicitly or encode it implicitly in its recurrent state. Data from different robots could contribute evidence to a shared model of objects and physical interactions. A new robot would then bring its own geometry, sensors, action space, and capabilities. Its policy could be trained for that embodiment using the shared physical evidence rather than copied from another robot’s motor commands.</p>
+
+        <p>A two-finger gripper lifting a box may teach a suction robot that the box is heavy, attached, or compliant. It cannot specify the suction robot’s joint trajectory. The new robot must determine how—or whether—it can produce the desired object-level outcome with its own body. In this sense, an affordance is not a property of the object alone. It is a relationship among the object, the embodiment, and the goal.</p>
+
+        <p>Autonomous driving offers a useful analogy. Waymo turns recorded road events into <a href="https://waymo.com/blog/2020/04/off-road-but-not-offline--simulation27/">editable simulations</a>, introduces reactive agents, varies scenarios, and synthesizes sensor observations as the simulated vehicle moves. Its newer <a href="https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation/">Waymo World Model</a> generates controllable driving environments across camera and lidar. Real experience becomes a world in which new behavior can be exercised rather than a trajectory that must be repeated.</p>
+
+        <p>Manipulation makes this idea harder. Most cars share a broadly similar interface, and ordinary driving avoids contact. In manipulation, changing the hand changes the available contacts, forces, observations, and sometimes whether the task is possible at all. Re-embodying an interaction therefore requires more than replaying the scene with a new controller. It requires separating what happened in the world from how one particular body caused and observed it.</p>
+
+        <h2>A five-year capability, not a blueprint</h2>
+
+        <p>The five-year goal is therefore a capability, not an architectural blueprint. A robot should be able to encounter an unfamiliar object, preserve the physical possibilities that remain compatible with its experience, and interact until it knows enough to act.</p>
+
+        <p>One possible route is an embodiment-conditioned probabilistic world model combined with reinforcement learning in imagination. Such a system might learn the value of probing from task reward, reuse physical evidence across robot bodies, and adapt its actions to the sensors and capabilities of a particular embodiment.</p>
+
+        <p>But this is a research hypothesis, not the conclusion. It remains unclear whether current world models preserve incompatible physical explanations coherently, whether policies trained inside them receive information unavailable to the real robot, and whether task reward alone is sufficient to produce useful probing. These are questions the proposal should make experimentally testable.</p>
+
+        <h2>How could this be tested?</h2>
+
+        <p>Construct tasks in which identical initial observations conceal different physical conditions that require different actions: a heavy free box and a light attached box, or a slippery object and a fragile one. Compare a reactive policy, a history-conditioned policy, and an agent trained inside a probabilistic world model. Test whether preserving incompatible hypotheses improves task success, whether the learned policy performs low-cost diagnostic interactions, and whether it stops probing once further information has no decision value.</p>
+
+        <p>A second experiment could test transfer. Collect interactions with one embodiment, convert them into shared physical evidence, and measure whether they reduce the real experience required by a robot with a different hand or sensor configuration. If simpler policies perform equally well, if probing provides no benefit, or if cross-embodiment evidence does not improve learning, the argument should be revised.</p>
+
+        <p class="pull-quote">I do not yet know what the successful architecture will look like. I am arguing for what it must be able to do.</p>
+      </div>
+
+      <footer class="essay-footer">
+        <p>This is a working research note. I welcome criticism, counterexamples, and pointers to relevant work.</p>
+        <p><a href="../blog.html">← Back to writing</a></p>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
