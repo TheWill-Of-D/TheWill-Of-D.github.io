@@ -41,6 +41,9 @@ geometry.setFromPoints(points);
 
 // Create the line object and add it to the scene
 const line = new THREE.Line(geometry, material);
+// The attractor oscillates around z = rho - 1. Shift that midpoint to the
+// scene origin so rotation and framing remain visually centered in the card.
+line.position.z = -(rho - 1) * scale;
 scene.add(line);
 
 // Position the camera so the attractor is visible
