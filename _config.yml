@@ -1,4 +1,7 @@
-title: My Blog
+title: Dhanoosh Pooranakumaran
+description: PhD student at NTU Singapore researching robotics, uncertainty, and physical intelligence.
+url: https://thewill-of-d.github.io
+author: Dhanoosh Pooranakumaran
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed

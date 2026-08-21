@@ -3,24 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me</title>
+  <meta name="description" content="About Dhanoosh Pooranakumaran, a PhD student at Nanyang Technological University, Singapore, working on robotics and physical intelligence." />
+  <meta name="author" content="Dhanoosh Pooranakumaran" />
+  <title>About | Dhanoosh Pooranakumaran</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">My Portfolio</div>
+  <nav aria-label="Primary navigation">
+    <a class="logo" href="index.html">
+      <span class="logo-full">Dhanoosh Pooranakumaran</span>
+      <span class="logo-short">Dhanoosh</span>
+    </a>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a class="active" href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
+      <li><a class="active" href="about.html" aria-current="page">About</a></li>
       <li><a href="blog.html">Blog</a></li>
+      <li><a href="https://www.linkedin.com/in/dhanoosh-pooranakumaran/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
     </ul>
   </nav>
 
-  <div class="content">
-    <h1>About Me</h1>
-    <p>Hello! I am [Your Name], a developer passionate about chaos theory, creative coding, and AI.</p>
-  </div>
+  <main class="site-main about-page">
+    <article class="about-copy">
+      <p class="eyebrow">About</p>
+      <h1>I’m Dhanoosh Pooranakumaran, a PhD student at NTU Singapore.</h1>
+      <p>I think about physical intelligence: how robots can interact with unfamiliar objects, reason under uncertainty, and acquire only the information that matters to a decision.</p>
+      <p>My current questions sit at the intersection of robot learning, probabilistic world models, active perception, and learning across embodiments. I am particularly interested in what a robot should do when the correct action cannot be inferred from observation alone.</p>
+      <p>This website is where I work through those ideas in public. My first research note asks why robots must learn what to measure—and when they know enough to act.</p>
+      <div class="home-actions">
+        <a class="button button-primary" href="essays/the-correct-action-is-not-always-in-the-observation.html">Read the research note</a>
+        <a class="button button-secondary" href="https://www.linkedin.com/in/dhanoosh-pooranakumaran/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>

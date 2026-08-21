@@ -3,31 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <meta name="description" content="Dhanoosh Pooranakumaran is a PhD student at NTU Singapore researching robotics, uncertainty, and physical intelligence." />
+  <meta name="author" content="Dhanoosh Pooranakumaran" />
+  <meta property="og:title" content="Dhanoosh Pooranakumaran | Robotics Research" />
+  <meta property="og:description" content="Researching how robots can use interaction to resolve uncertainty and determine when they know enough to act." />
+  <meta property="og:type" content="website" />
+  <title>Dhanoosh Pooranakumaran | Robotics Research</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <!-- Three.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="home-page">
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">My Portfolio</div>
+  <nav aria-label="Primary navigation">
+    <a class="logo" href="index.html" aria-current="page">
+      <span class="logo-full">Dhanoosh Pooranakumaran</span>
+      <span class="logo-short">Dhanoosh</span>
+    </a>
     <ul>
-      <li><a class="active" href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
       <li><a href="blog.html">Blog</a></li>
+      <li><a href="https://www.linkedin.com/in/dhanoosh-pooranakumaran/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
     </ul>
   </nav>
 
   <!-- Container for Lorenz Attractor Animation -->
   <div id="lorenz-container"></div>
   
-  <!-- Hero Text (layered above the canvas) -->
-  <div class="hero-text">
-    <h1>Welcome to My Portfolio</h1>
-    <p>Exploring Chaos &amp; Order</p>
-  </div>
+  <main class="home-main">
+    <section class="home-hero" aria-labelledby="home-title">
+      <p class="eyebrow">PhD student · NTU Singapore</p>
+      <h1 id="home-title">Physical intelligence begins where observation ends.</h1>
+      <p class="home-intro">I study how robots can use interaction to resolve uncertainty, understand unfamiliar objects, and determine when they know enough to act.</p>
+      <div class="home-actions">
+        <a class="button button-primary" href="essays/the-correct-action-is-not-always-in-the-observation.html">Read my research note</a>
+        <a class="button button-secondary" href="https://www.linkedin.com/in/dhanoosh-pooranakumaran/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <a class="featured-note" href="essays/the-correct-action-is-not-always-in-the-observation.html" aria-label="Read The Correct Action Is Not Always in the Observation">
+      <p class="card-meta">Featured research note · August 2026</p>
+      <h2>The Correct Action Is Not Always in the Observation</h2>
+      <p>Why robots must learn what to measure—and when they know enough to act.</p>
+      <span>Read the essay →</span>
+    </a>
+  </main>
 
   <!-- Scripts -->
   <script src="assets/js/lorenz.js"></script>

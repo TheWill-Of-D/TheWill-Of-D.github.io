@@ -3,8 +3,10 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75, window.innerWidth / window.innerHeight, 0.1, 1000
 );
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x000000, 0);
 document.getElementById("lorenz-container").appendChild(renderer.domElement);
 
 // Lorenz attractor parameters and initial conditions
@@ -17,7 +19,11 @@ const scale = 0.02; // Scale factor to keep attractor in view
 let points = [];
 const maxPoints = 5000; // Maximum number of points to keep for performance
 const geometry = new THREE.BufferGeometry();
-const material = new THREE.LineBasicMaterial({ color: 0x00ffff });
+const material = new THREE.LineBasicMaterial({
+  color: 0x00ffff,
+  transparent: true,
+  opacity: 0.55
+});
 
 // Create an initial point
 points.push(new THREE.Vector3(x * scale, y * scale, z * scale));
@@ -65,7 +71,11 @@ function animate() {
   
   renderer.render(scene, camera);
 }
-animate();
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  renderer.render(scene, camera);
+} else {
+  animate();
+}
 
 // Handle window resizing
 window.addEventListener("resize", () => {
