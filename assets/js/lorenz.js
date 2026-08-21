@@ -20,9 +20,9 @@ let points = [];
 const maxPoints = 5000; // Maximum number of points to keep for performance
 const geometry = new THREE.BufferGeometry();
 const material = new THREE.LineBasicMaterial({
-  color: 0x00ffff,
+  color: 0x008c92,
   transparent: true,
-  opacity: 0.55
+  opacity: 0.42
 });
 
 // Create an initial point

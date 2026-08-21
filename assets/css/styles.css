@@ -1,4 +1,15 @@
 /* Basic Reset */
+:root {
+    color-scheme: light;
+    --background: #f5f3ed;
+    --surface: #fffdf8;
+    --text: #172326;
+    --muted: #5f6a6c;
+    --accent: #007c82;
+    --accent-hover: #005e63;
+    --border: #d7dcda;
+  }
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +17,8 @@
   }
   body {
     font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background-color: #0a0a0a;
-    color: white;
+    background-color: var(--background);
+    color: var(--text);
     overflow-x: hidden;
   }
 
@@ -23,8 +34,8 @@
     z-index: 2;
     pointer-events: none;
     background:
-      linear-gradient(90deg, rgba(4, 8, 10, 0.92) 0%, rgba(4, 8, 10, 0.7) 50%, rgba(4, 8, 10, 0.42) 100%),
-      radial-gradient(circle at 70% 45%, transparent 0, rgba(4, 8, 10, 0.52) 62%);
+      linear-gradient(90deg, rgba(245, 243, 237, 0.97) 0%, rgba(245, 243, 237, 0.82) 50%, rgba(245, 243, 237, 0.46) 100%),
+      radial-gradient(circle at 70% 45%, transparent 0, rgba(245, 243, 237, 0.4) 65%);
   }
   
   /* Navigation Styling */
@@ -32,8 +43,8 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(7, 9, 10, 0.72);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(245, 243, 237, 0.82);
+    border-bottom: 1px solid rgba(23, 35, 38, 0.1);
     backdrop-filter: blur(14px);
     display: flex;
     justify-content: space-between;
@@ -43,7 +54,7 @@
   }
   
   nav .logo {
-    color: #00ffff;
+    color: var(--accent);
     font-size: 20px;
     font-weight: 650;
     letter-spacing: -0.02em;
@@ -53,7 +64,7 @@
 
   nav .logo:hover,
   nav .logo:focus-visible {
-    color: #00ffff;
+    color: var(--accent);
   }
   
   nav ul {
@@ -64,14 +75,14 @@
   
   nav ul li a {
     text-decoration: none;
-    color: white;
+    color: var(--text);
     transition: color 0.3s;
   }
   
   nav ul li a:hover,
   nav ul li a.active,
   nav ul li a:focus-visible {
-    color: #00ffff;
+    color: var(--accent);
   }
   
   /* Lorenz Container (Canvas) */
@@ -86,7 +97,7 @@
   }
 
   #lorenz-container canvas {
-    opacity: 0.52;
+    opacity: 0.38;
   }
   
   /* Hero Text Styling */
@@ -130,7 +141,7 @@
 
   .home-intro {
     max-width: 650px;
-    color: #c5c9ca;
+    color: var(--muted);
     font-size: clamp(1.08rem, 2vw, 1.3rem);
     line-height: 1.65;
   }
@@ -162,34 +173,34 @@
   }
 
   .button-primary {
-    background: #00ffff;
-    color: #001314;
+    background: var(--accent);
+    color: #fff;
   }
 
   .button-primary:hover,
   .button-primary:focus-visible {
-    background: #8effff;
+    background: var(--accent-hover);
   }
 
   .button-secondary {
-    border-color: #3a4142;
-    background: rgba(12, 17, 18, 0.7);
-    color: #f4f4f4;
+    border-color: #aebcba;
+    background: rgba(255, 253, 248, 0.76);
+    color: var(--text);
   }
 
   .button-secondary:hover,
   .button-secondary:focus-visible {
-    border-color: #00ffff;
-    color: #00ffff;
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   .featured-note {
     display: block;
     padding: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(23, 35, 38, 0.15);
     border-radius: 18px;
-    background: rgba(12, 17, 18, 0.72);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 253, 248, 0.82);
+    box-shadow: 0 24px 80px rgba(28, 49, 51, 0.12);
     color: inherit;
     text-decoration: none;
     backdrop-filter: blur(14px);
@@ -198,7 +209,7 @@
 
   .featured-note:hover,
   .featured-note:focus-visible {
-    border-color: #00ffff;
+    border-color: var(--accent);
     transform: translateY(-3px);
   }
 
@@ -212,12 +223,12 @@
 
   .featured-note > p:not(.card-meta) {
     margin-bottom: 22px;
-    color: #b8bdbd;
+    color: var(--muted);
     line-height: 1.6;
   }
 
   .featured-note > span {
-    color: #69ffff;
+    color: var(--accent);
     font-size: 0.92rem;
     font-weight: 600;
   }
@@ -250,7 +261,7 @@
   }
 
   .page-intro p {
-    color: #b7b7b7;
+    color: var(--muted);
     font-size: 1.05rem;
     line-height: 1.7;
   }
@@ -276,7 +287,7 @@
   .about-copy > p:not(.eyebrow) {
     max-width: 710px;
     margin-bottom: 1.25em;
-    color: #c9cccc;
+    color: var(--muted);
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.2rem;
     line-height: 1.75;
@@ -290,9 +301,9 @@
   .writing-card {
     display: block;
     padding: 28px;
-    border: 1px solid #292929;
+    border: 1px solid var(--border);
     border-radius: 16px;
-    background: #111;
+    background: var(--surface);
     color: inherit;
     text-decoration: none;
     transition: border-color 0.2s ease, transform 0.2s ease;
@@ -300,14 +311,14 @@
 
   .writing-card:hover,
   .writing-card:focus-visible {
-    border-color: #00ffff;
+    border-color: var(--accent);
     transform: translateY(-2px);
   }
 
   .card-meta,
   .article-meta,
   .eyebrow {
-    color: #00ffff;
+    color: var(--accent);
     font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -322,15 +333,15 @@
 
   .writing-card p {
     max-width: 720px;
-    color: #b7b7b7;
+    color: var(--muted);
     line-height: 1.65;
   }
 
   /* Long-form essays */
   .essay-page {
     background:
-      radial-gradient(circle at 50% -20%, rgba(0, 255, 255, 0.09), transparent 38rem),
-      #0a0a0a;
+      radial-gradient(circle at 50% -20%, rgba(0, 124, 130, 0.1), transparent 38rem),
+      var(--background);
   }
 
   .essay {
@@ -341,7 +352,7 @@
 
   .essay-header {
     padding-bottom: 40px;
-    border-bottom: 1px solid #292929;
+    border-bottom: 1px solid var(--border);
   }
 
   .essay h1 {
@@ -356,20 +367,20 @@
   .essay-dek {
     max-width: 680px;
     margin-bottom: 22px;
-    color: #c8c8c8;
+    color: var(--muted);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(1.2rem, 3vw, 1.5rem);
     line-height: 1.45;
   }
 
   .article-meta {
-    color: #8f8f8f;
+    color: #707a7b;
     letter-spacing: 0.06em;
   }
 
   .essay-body {
     padding-top: 42px;
-    color: #e4e4e4;
+    color: #283638;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.12rem;
     line-height: 1.82;
@@ -381,7 +392,7 @@
 
   .essay-body h2 {
     margin: 2.4em 0 0.75em;
-    color: #fff;
+    color: var(--text);
     font-family: "Poppins", sans-serif;
     font-size: clamp(1.45rem, 4vw, 2rem);
     line-height: 1.25;
@@ -389,20 +400,20 @@
   }
 
   .essay-body a {
-    color: #69ffff;
-    text-decoration-color: rgba(105, 255, 255, 0.45);
+    color: var(--accent-hover);
+    text-decoration-color: rgba(0, 124, 130, 0.4);
     text-underline-offset: 0.18em;
   }
 
   .essay-body a:hover {
-    text-decoration-color: #69ffff;
+    text-decoration-color: var(--accent);
   }
 
   .pull-quote {
     margin: 2.2em 0;
     padding: 0.2em 0 0.2em 24px;
-    border-left: 3px solid #00ffff;
-    color: #fff;
+    border-left: 3px solid var(--accent);
+    color: var(--text);
     font-size: 1.35rem;
     line-height: 1.55;
   }
@@ -410,20 +421,20 @@
   .essay-footer {
     margin-top: 64px;
     padding-top: 24px;
-    border-top: 1px solid #292929;
-    color: #9b9b9b;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
     font-size: 0.92rem;
     line-height: 1.6;
   }
 
   .essay-footer a {
-    color: #69ffff;
+    color: var(--accent-hover);
   }
 
   .comments-section {
     margin-top: 56px;
     padding-top: 38px;
-    border-top: 1px solid #292929;
+    border-top: 1px solid var(--border);
   }
 
   .comments-section h2 {
@@ -437,7 +448,7 @@
   .comments-section > p:not(.eyebrow) {
     max-width: 650px;
     margin-bottom: 28px;
-    color: #aeb3b3;
+    color: var(--muted);
     line-height: 1.65;
   }
   
